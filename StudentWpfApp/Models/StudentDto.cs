@@ -16,25 +16,25 @@ namespace StudentWpfApp.Models
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        private int? id;
+        private int id;
 
-        public int? Id
+        public int Id
         {
             get { return id; }
             set { id = value; OnPropertyChanged("Id"); }
         }
 
-        private string? name;
+        private string name;
 
-        public string? Name
+        public string Name
         {
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
 
-        private int? age;
+        private int age;
 
-        public int? Age
+        public int Age
         {
             get { return age; }
             set { age = value; OnPropertyChanged("Age"); }

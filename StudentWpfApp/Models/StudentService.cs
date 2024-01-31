@@ -38,7 +38,7 @@ namespace StudentWpfApp.Models
             bool IsAdded = false;
             //Age must be between 21 and 58
             if (objNewStudent.Age < 21 || objNewStudent.Age > 58)
-                throw new ArgumentException("Invalid age limit for employee");
+                throw new ArgumentException("Invalid age limit for student");
 
             try
             {

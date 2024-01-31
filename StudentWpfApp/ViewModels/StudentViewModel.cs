@@ -24,7 +24,7 @@ namespace StudentWpfApp.ViewModels
         {
             ObjStudentService = new StudentService();
             LoadData();
-            CurrentStudent = new StudentDto();
+            CurrentStudents = new StudentDto();
             saveCommand = new RelayCommand(Save);
             updateCommand = new RelayCommand(Update);
            
@@ -34,7 +34,7 @@ namespace StudentWpfApp.ViewModels
         public ObservableCollection<StudentDto> StudentLists
         {
             get { return StudentList; }
-            set { StudentList = value; OnPropertyChanged("EmployeesList"); }
+            set { StudentList = value; OnPropertyChanged("StudentLists"); }
         }
         private void LoadData()
         {
@@ -46,7 +46,7 @@ namespace StudentWpfApp.ViewModels
         public StudentDto CurrentStudents
         {
             get { return CurrentStudent; }
-            set { CurrentStudent = value; OnPropertyChanged("CurrentEmployee"); }
+            set { CurrentStudent = value; OnPropertyChanged("CurrentStudents"); }
         }
 
         private RelayCommand saveCommand;
@@ -64,7 +64,7 @@ namespace StudentWpfApp.ViewModels
         {
             try
             {
-                var IsSaved = ObjStudentService.Add(CurrentStudent);
+                var IsSaved = ObjStudentService.Add(CurrentStudents);
                 LoadData();
                 if (IsSaved)
                     Message = "Employee saved";
@@ -88,7 +88,7 @@ namespace StudentWpfApp.ViewModels
         {
             try
             {
-                var IsUpdated = ObjStudentService.Update(CurrentStudent);
+                var IsUpdated = ObjStudentService.Update(CurrentStudents);
                 if (IsUpdated)
                 {
                     Message = "Employee updated";
