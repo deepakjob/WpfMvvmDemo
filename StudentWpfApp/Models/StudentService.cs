@@ -33,21 +33,21 @@ namespace StudentWpfApp.Models
             return ObjStudentList;
         }
 
-        public bool Add(StudentDto objNewEmployee)
+        public bool Add(StudentDto objNewStudent)
         {
             bool IsAdded = false;
             //Age must be between 21 and 58
-            if (objNewEmployee.Age < 21 || objNewEmployee.Age > 58)
+            if (objNewStudent.Age < 21 || objNewStudent.Age > 58)
                 throw new ArgumentException("Invalid age limit for employee");
 
             try
             {
-                var ObjEmployee = new Student();
-                ObjEmployee.Id = objNewEmployee.Id;
-                ObjEmployee.Name = objNewEmployee.Name;
-                ObjEmployee.Age = objNewEmployee.Age;
+                var ObjStudent = new Student();
+                ObjStudent.Id = objNewStudent.Id;
+                ObjStudent.Name = objNewStudent.Name;
+                ObjStudent.Age = objNewStudent.Age;
 
-                ObjContext.Students.Add(ObjEmployee);
+                ObjContext.Students.Add(ObjStudent);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
             }
@@ -60,15 +60,15 @@ namespace StudentWpfApp.Models
             return IsAdded;
         }
 
-        public bool Update(StudentDto objEmployeeToUpdate)
+        public bool Update(StudentDto objStudentToUpdate)
         {
             bool IsUpdated = false;
 
             try
             {
-                var ObjEmployee = ObjContext.Students.Find(objEmployeeToUpdate.Id);
-                ObjEmployee.Name = objEmployeeToUpdate.Name;
-                ObjEmployee.Age = objEmployeeToUpdate.Age;
+                var ObjStudent = ObjContext.Students.Find(objStudentToUpdate.Id);
+                ObjStudent.Name = objStudentToUpdate.Name;
+                ObjStudent.Age = objStudentToUpdate.Age;
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsUpdated = NoOfRowsAffected > 0;
             }

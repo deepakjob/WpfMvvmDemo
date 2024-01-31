@@ -49,19 +49,19 @@
           Grid.Column="1"
           Margin="5,8"
           Padding="3"
-          Text="{Binding Path=CurrentEmployee.Id, Mode=TwoWay}" />
+          Text="{Binding Path=CurrentStudent.Id, Mode=TwoWay}" />
         <TextBox Name="txtName"
          Grid.Row="2"
          Grid.Column="1"
          Margin="5,8"
          Padding="3"
-         Text="{Binding Path=CurrentEmployee.Name, Mode=TwoWay}" />
+         Text="{Binding Path=CurrentStudent.Name, Mode=TwoWay}" />
         <TextBox Name="txtAge"
          Grid.Row="3"
          Grid.Column="1"
          Margin="5,8"
          Padding="3"
-         Text="{Binding Path=CurrentEmployee.Age, Mode=TwoWay}" />
+         Text="{Binding Path=CurrentStudent.Age, Mode=TwoWay}" />
         <StackPanel Orientation="Horizontal"
             Grid.Row="4"
             Grid.Column="1">
@@ -81,21 +81,21 @@
             Margin="5,8"
             Padding="3"
             Text="{Binding Path=Message}" />
-            <DataGrid Name="dgEmployees"
+            <DataGrid Name="dgStudents"
            AutoGenerateColumns="False"
            Grid.Row="6"
            Grid.Column="1"
            Margin="5,8"
            Padding="3"
-           ItemsSource="{Binding Path=EmployeesList, Mode=TwoWay}">
+           ItemsSource="{Binding Path=StudentList, Mode=TwoWay}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employee Id"
+                    <DataGridTextColumn Header="Student Id"
                              Width="auto"
                              Binding="{Binding Path=Id}" />
-                    <DataGridTextColumn Header="Employee Name"
+                    <DataGridTextColumn Header="Student Name"
                              Width="auto"
                              Binding="{Binding Path=Name}" />
-                    <DataGridTextColumn Header="Employee Age"
+                    <DataGridTextColumn Header="Student Age"
                              Width="auto"
                              Binding="{Binding Path=Age}" />
                 </DataGrid.Columns>

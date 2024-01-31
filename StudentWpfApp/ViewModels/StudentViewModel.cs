@@ -19,34 +19,34 @@ namespace StudentWpfApp.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        StudentService ObjEmployeeService;
+        StudentService ObjStudentService;
         public StudentViewModel()
         {
-            ObjEmployeeService = new StudentService();
+            ObjStudentService = new StudentService();
             LoadData();
-            CurrentEmployee = new StudentDto();
+            CurrentStudent = new StudentDto();
             saveCommand = new RelayCommand(Save);
             updateCommand = new RelayCommand(Update);
            
         }
         #region DisplayOperation
-        private ObservableCollection<StudentDto> employeesList;
-        public ObservableCollection<StudentDto> EmployeesList
+        private ObservableCollection<StudentDto> StudentList;
+        public ObservableCollection<StudentDto> StudentLists
         {
-            get { return employeesList; }
-            set { employeesList = value; OnPropertyChanged("EmployeesList"); }
+            get { return StudentList; }
+            set { StudentList = value; OnPropertyChanged("EmployeesList"); }
         }
         private void LoadData()
         {
-            EmployeesList = new ObservableCollection<StudentDto>(ObjEmployeeService.GetAll());
+            StudentLists = new ObservableCollection<StudentDto>(ObjStudentService.GetAll());
         }
         #endregion
         #region SaveOperation
-        private StudentDto currentEmployee;
-        public StudentDto CurrentEmployee
+        private StudentDto CurrentStudent;
+        public StudentDto CurrentStudents
         {
-            get { return currentEmployee; }
-            set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
+            get { return CurrentStudent; }
+            set { CurrentStudent = value; OnPropertyChanged("CurrentEmployee"); }
         }
 
         private RelayCommand saveCommand;
@@ -64,7 +64,7 @@ namespace StudentWpfApp.ViewModels
         {
             try
             {
-                var IsSaved = ObjEmployeeService.Add(CurrentEmployee);
+                var IsSaved = ObjStudentService.Add(CurrentStudent);
                 LoadData();
                 if (IsSaved)
                     Message = "Employee saved";
@@ -88,7 +88,7 @@ namespace StudentWpfApp.ViewModels
         {
             try
             {
-                var IsUpdated = ObjEmployeeService.Update(CurrentEmployee);
+                var IsUpdated = ObjStudentService.Update(CurrentStudent);
                 if (IsUpdated)
                 {
                     Message = "Employee updated";
