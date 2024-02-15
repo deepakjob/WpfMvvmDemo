@@ -79,6 +79,29 @@ namespace StudentWpfApp.Models
 
             return IsUpdated;
         }
+        public StudentDto Search(int id)
+        {
+            StudentDto ObjStudent = null;
 
+            try
+            {
+                var ObjEmployeeToFind = ObjContext.Students.Find(id);
+                if (ObjEmployeeToFind != null)
+                {
+                    ObjStudent = new StudentDto()
+                    {
+                        Id = ObjEmployeeToFind.Id,
+                        Name = ObjEmployeeToFind.Name,
+                        Age = ObjEmployeeToFind.Age
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ObjStudent;
+        }
     }
 }
+

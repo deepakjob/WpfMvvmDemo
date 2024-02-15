@@ -26,8 +26,8 @@ namespace StudentWpfApp.ViewModels
             LoadData();
             CurrentStudents = new StudentDto();
             saveCommand = new RelayCommand(Save);
+            searchCommand = new RelayCommand(Search);
             updateCommand = new RelayCommand(Update);
-           
         }
         #region DisplayOperation
         private ObservableCollection<StudentDto> StudentList;
@@ -105,5 +105,33 @@ namespace StudentWpfApp.ViewModels
             }
         }
         #endregion
+        #region SearchOperation
+        private RelayCommand searchCommand;
+        public RelayCommand SearchCommand
+        {
+            get { return searchCommand; }
+        }
+
+        public void Search()
+        {
+            try
+            {
+                var ObjStudent = ObjStudentService.Search(CurrentStudents.Id);
+                if (ObjStudent != null)
+                {
+                    CurrentStudents = ObjStudent;
+                }
+                else
+                {
+                    Message = "Employee not found";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+        #endregion
+
     }
 }

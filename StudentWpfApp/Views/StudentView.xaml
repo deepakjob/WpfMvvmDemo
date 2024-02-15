@@ -75,6 +75,12 @@
         Margin="5,8"
         Padding="3"
         Command="{Binding Path=UpdateCommand}" />
+            <Button Name="btnSearch"
+        Content="SEARCH"
+        Margin="5,8"
+        Padding="3"
+        Command="{Binding Path=SearchCommand}" />
+            
             <TextBlock Name="txtBlockMessage"
             Grid.Row="5"
             Grid.Column="1"
