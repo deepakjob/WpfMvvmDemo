@@ -28,6 +28,7 @@ namespace StudentWpfApp.ViewModels
             saveCommand = new RelayCommand(Save);
             searchCommand = new RelayCommand(Search);
             updateCommand = new RelayCommand(Update);
+            deleteCommand = new RelayCommand(Delete);
         }
         #region DisplayOperation
         private ObservableCollection<StudentDto> StudentList;
@@ -53,6 +54,12 @@ namespace StudentWpfApp.ViewModels
         public RelayCommand SaveCommand
         {
             get { return saveCommand; }
+        }
+        #region DeleteOperation
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
+        {
+            get { return deleteCommand; }
         }
         private string message;
         public string Message
@@ -124,6 +131,30 @@ namespace StudentWpfApp.ViewModels
                 else
                 {
                     Message = "Employee not found";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+        #endregion
+
+       
+
+        public void Delete()
+        {
+            try
+            {
+                var IsDeleted = ObjStudentService.Delete(CurrentStudents.Id);
+                if (IsDeleted)
+                {
+                    Message = "Employee deleted";
+                    LoadData();
+                }
+                else
+                {
+                    Message = "Delete operation failed";
                 }
             }
             catch (Exception ex)

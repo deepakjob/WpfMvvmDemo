@@ -102,6 +102,25 @@ namespace StudentWpfApp.Models
             }
             return ObjStudent;
         }
+
+        public bool Delete(int id)
+        {
+            bool IsDeleted = false;
+            try
+            {
+                var ObjEmployeeToDelete = ObjContext.Students.Find(id);
+                ObjContext.Students.Remove(ObjEmployeeToDelete);
+                var NoOfRowsAffected = ObjContext.SaveChanges();
+                IsDeleted = NoOfRowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return IsDeleted;
+        }
+
     }
 }
 

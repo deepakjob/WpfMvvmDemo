@@ -80,7 +80,11 @@
         Margin="5,8"
         Padding="3"
         Command="{Binding Path=SearchCommand}" />
-            
+            <Button Name="btnDelete"
+        Content="DELETE"
+        Margin="5,8"
+        Padding="3"
+        Command="{Binding Path=DeleteCommand}" />
             <TextBlock Name="txtBlockMessage"
             Grid.Row="5"
             Grid.Column="1"
@@ -107,5 +111,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <Slider Grid.ColumnSpan="2" Width="120"/>
     </Grid>
 </UserControl>
